@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="calculator">
+    <div class="top-bar">
+      <button id="theme-toggle">🌙</button>
+    </div>
+
+    <!-- Editable input box -->
+    <input type="text" id="display" oninput="liveCalculate()" />
+
+    <!-- Live result shown here -->
+    <div id="live-result"></div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+      <button onclick="applyFunction('Math.sin')">sin</button>
+      <button onclick="applyFunction('Math.cos')">cos</button>
+      <button onclick="applyFunction('Math.tan')">tan</button>
+      <button onclick="appendValue('**')">^</button>
+      <br>
+      <button onclick="applyFunction('Math.sqrt')">√</button>
+      <button onclick="applyFunction('Math.sqare')">x^2</button>
+      <button onclick="applyFunction('Math.log10')">log</button>
+      <button onclick="applyFunction('Math.log')">ln</button>
+      <button onclick="appendValue('Math.PI')">π</button>
+      <br>
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button onclick="deleteLast()">DEL</button>
+      <button onclick="clearDisplay()">AC</button>
+      <br>
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button onclick="appendValue('*')">*</button>
+      <button onclick="appendValue('%')">%</button>
+      <br>
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button onclick="appendValue('+')">+</button>
+      <button onclick="appendValue('-')">-</button>
+
+      <br>
+      <button onclick="appendValue('0')">0</button>
+      <button onclick="appendValue('.')">.</button>
+      <button onclick="appendValue('*10^x')">*10^x</button>
+      <button onclick="appendValue('/')">/</button>
+      <button onclick="calculateResult()" class="equal">=</button>
+      
+      <br>
+      <!-- <div class="sci-buttons">
+      <button onclick="applyFunction('Math.sqrt')">√</button>
+      <button onclick="applyFunction('Math.log10')">log</button>
+      <button onclick="applyFunction('Math.log')">ln</button>
+      <button onclick="appendValue('Math.PI')">π</button>
+    </div> -->
+
+    </div>
+
+    <!-- History Panel -->
+    <div class="history-panel">
+      <h3>History</h3>
+      <ul id="history"></ul>
+    </div>
+  </div>
+
+  <script src="script1.js"></script>
+</body>
+</html>
