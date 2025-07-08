@@ -1,0 +1,59 @@
+function appendValue(val) {
+  const display = document.getElementById('display');
+  display.value += val;
+  liveCalculate();
+}
+
+function clearDisplay() {
+  document.getElementById('display').value = '';
+  document.getElementById('live-result').innerText = '';
+}
+
+function deleteLast() {
+  const display = document.getElementById('display');
+  display.value = display.value.slice(0, -1);
+  liveCalculate();
+}
+
+function calculateResult() {
+  const expression = document.getElementById('display').value;
+  try {
+    const result = eval(expression);
+    document.getElementById('live-result').innerText = result;
+
+    if (!isNaN(result)) {
+      addToHistory(`${expression} = ${result}`);
+    }
+
+    document.getElementById('display').value = result;
+  } catch (error) {
+    document.getElementById('live-result').innerText = 'Error';
+  }
+}
+
+function applyFunction(func) {
+  const display = document.getElementById('display');
+  display.value = `${func}(${display.value})`;
+  liveCalculate();
+}
+
+function liveCalculate() {
+  const expression = document.getElementById('display').value;
+  try {
+    const result = eval(expression);
+    if (!isNaN(result)) {
+      document.getElementById('live-result').innerText = result;
+    } else {
+      document.getElementById('live-result').innerText = '';
+    }
+  } catch (error) {
+    document.getElementById('live-result').innerText = '';
+  }
+}
+
+function addToHistory(entry) {
+  const historyList = document.getElementById('history');
+  const listItem = document.createElement('li');
+  listItem.textContent = entry;
+  historyList.prepend(listItem);
+}
